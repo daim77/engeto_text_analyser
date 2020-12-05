@@ -20,10 +20,26 @@ other freshwater genera and herring similar to those in modern oceans. Other fis
 garpike and stingray are also present.
 '''
     ]
+# definitions for variables
+autent_dict = {"bob": "123", "ann": "pass123", "mike": "password123", "liz": "pass123"}
+my_user_name = ''  # empty username def
+my_pass_name = ''  # empty password def
 
 # user welcome
+print('=' * 60)
+print('                TEXT ANALYSER')
+print('=' * 60)
+print('Welcome: login, choo®se text and view instant results!')
+print('=' * 60)
 
 # autentication via input and verification if in database
+my_user_name = input('user name: ')
+my_pass_name = input('password:  ')
+if my_user_name not in autent_dict:
+    exit()
+if my_user_name in autent_dict:
+    if autent_dict[my_user_name] != my_pass_name:
+        exit()
 
 # three text choices to be analysed - input int
 
