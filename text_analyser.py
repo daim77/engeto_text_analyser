@@ -22,8 +22,10 @@ garpike and stingray are also present.
     ]
 # definitions for variables
 autent_dict = {"bob": "123", "ann": "pass123", "mike": "password123", "liz": "pass123"}
-my_user_name = ''  # empty username def
-my_pass_name = ''  # empty password def
+my_user_name = ""  # empty username def
+my_pass_name = ""  # empty password def
+my_text = 0  # default value for text choice
+my_text_list = []
 
 # user welcome
 print('=' * 60)
@@ -42,6 +44,11 @@ if my_user_name in autent_dict:
         exit()
 
 # three text choices to be analysed - input int
+my_text = int(input('Insert which text you woud like to analyze (from 1 to 3): '))
+my_text = my_text - 1
+
+# text separation from TEXTS
+my_text_list = TEXTS[my_text].split()
 
 # stats for text
 # total amount of words
