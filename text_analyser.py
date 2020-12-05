@@ -20,3 +20,22 @@ other freshwater genera and herring similar to those in modern oceans. Other fis
 garpike and stingray are also present.
 '''
     ]
+
+# user welcome
+
+# autentication via input and verification if in database
+
+# three text choices to be analysed - input int
+
+# stats for text
+# total amount of words
+# .title amount of words
+# .uppercase amount of words
+# .lowercase amount of words
+# amount of numbers
+
+# star chart as stats of amount of lenghts of the words
+
+# sum of all numbers from the text
+
+# FINAL OUTPUT

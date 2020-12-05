@@ -26,7 +26,7 @@ Pokud se ti tento úkol bude zdát složitý, prověř, jestli zadané údaje js
 - počet čísel (ne cifer!).
 
 6. Program zobrazí jednoduchý sloupcový graf, který bude reprezentovat četnost různých délek slov v textu. Například takto: 
-1 * 1
+ 1 * 1
  2 *********** 11
  3 *************** 15
  4 ********* 9
