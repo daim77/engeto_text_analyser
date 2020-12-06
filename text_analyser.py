@@ -99,6 +99,11 @@ print('Total lowercase words amount:    ', spec_stat['lower'])
 print('Total numeric strings amount:    ', spec_stat['digit'])
 print('=' * 60)
 
-print(my_text_list)
-print(spec_stat)
-print(length_stat)
+count = 1
+while count < (len(length_stat) - 1):
+    if length_stat[count] != 0:
+        print(count, '*'*length_stat[count], ' ', length_stat[count])
+    count += 1
+print('=' * 60)
+print('Total sum of numeric strings: ', spec_stat['sum'])
+print('=' * 60)
