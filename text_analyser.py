@@ -26,7 +26,7 @@ my_user_name = ""  # empty username var
 my_pass_word = ""  # empty password var
 count = 0  # universal counting variable
 my_text = 0  # default value for text choice
-my_text_list = list()  # here is separated text from original TEXTS
+my_text_list = list()  # here is saved separated text from original TEXTS
 spec_stat = {
     'length': 0,
     'title': 0,
@@ -35,13 +35,8 @@ spec_stat = {
     'digit': 0,
     'sum': 0,
 }  # cleaning counter for spec stat
-length_stat = [
-    0, 0, 0, 0, 0, 0, 0, 0, 0 ,0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0,
-]  # index 1 == 1 letter words, index 2 == 2 letters words etc | 45 indexes = the longiest english word
+
+length_stat = []  # index 1 == 1 letter words, index 2 == 2 letters words etc | 45 indexes = the longiest english word
 
 # user welcome
 print('=' * 60)
@@ -73,6 +68,12 @@ while count < len(my_text_list):
     my_text_list[count] = my_text_list[count].strip(",.")  # cleaning from unwanted characters
     count += 1
 
+# fullfilment length_stat LIST for counting letters in particular words, last index = the longiest word + 1
+count = -1
+while count < len(max(my_text_list, key=len)):
+    length_stat.append(0)
+    count += 1
+
 # stats for text
 count = 0
 spec_stat['length'] = len(my_text_list)  # total amount of words
@@ -99,11 +100,14 @@ print('Total lowercase words amount:    ', spec_stat['lower'])
 print('Total numeric strings amount:    ', spec_stat['digit'])
 print('=' * 60)
 
+# star chart visualisation
 count = 1
 while count < (len(length_stat) - 1):
     if length_stat[count] != 0:
-        print(count, '*'*length_stat[count], ' ', length_stat[count])
+        print(count, '*' * length_stat[count], ' ', length_stat[count])
     count += 1
+
+# sum up output
 print('=' * 60)
 print('Total sum of numeric strings: ', spec_stat['sum'])
 print('=' * 60)
