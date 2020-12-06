@@ -21,11 +21,21 @@ garpike and stingray are also present.
 '''
     ]
 # definitions for variables
-autent_dict = {"bob": "123", "ann": "pass123", "mike": "password123", "liz": "pass123"}
-my_user_name = ""  # empty username def
-my_pass_word = ""  # empty password def
+autent_dict = {"bob": "123", "ann": "pass123", "mike": "password123", "liz": "pass123"}  # authencitation database
+my_user_name = ""  # empty username var
+my_pass_word = ""  # empty password var
 my_text = 0  # default value for text choice
-my_text_list = []
+my_text_list = [] # here is separated text from original TEXTS
+length_stat = []  # index 0 == 1 letter words, index 1 == 2 letters words etc
+spec_stat = {
+    'length': 0,
+    'title': 0,
+    'upper': 0,
+    'lower': 0,
+    'digit': 0,
+    'sum': 0,
+}  # cleaning counter for spec stat
+count = 0
 
 # user welcome
 print('=' * 60)
@@ -34,7 +44,7 @@ print('=' * 60)
 print('Welcome: login, choo®se text and view instant results!')
 print('=' * 60)
 
-# autentication via input and verification if in database
+# authentication and login
 my_user_name = input('user name: ')
 my_pass_word = input('password:  ')
 if my_user_name not in autent_dict:
@@ -46,22 +56,43 @@ if my_user_name in autent_dict:
         exit()
 
 # three text choices to be analysed - input int
-my_text = int(input('Insert which text you woud like to analyze (from 1 to 3): '))
+my_text = int(input('Insert which text you would like to analyze (from 1 to 3): '))
 my_text = my_text - 1
 print('=' * 60)
 
 # text separation from TEXTS
 my_text_list = TEXTS[my_text].split()
+while count < len(my_text_list):
+    my_text_list[count] = my_text_list[count].strip(",.")  # cleaning from unwanted characters
+    count += 1
 
 # stats for text
-# total amount of words
+count = 0
+spec_stat['length'] = len(my_text_list)  # total amount of words
+while count < len(my_text_list):
+    if my_text_list[count].istitle():
+        spec_stat['title'] += 1
+    if my_text_list[count].isupper():
+        spec_stat['upper'] += 1
+    if my_text_list[count].islower():
+        spec_stat['lower'] += 1
+    if my_text_list[count].isdigit():
+        spec_stat['digit'] += 1
+    count += 1
+
+
 # .title amount of words
 # .uppercase amount of words
 # .lowercase amount of words
 # amount of numbers
+# sum of all numbers from the text
+
 
 # star chart as stats of amount of lenghts of the words
 
-# sum of all numbers from the text
 
 # FINAL OUTPUT
+print('=' * 60)
+print('Total words amount:', spec_stat['length'])
+print(my_text_list)
+print(spec_stat)
