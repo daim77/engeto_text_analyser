@@ -24,9 +24,9 @@ garpike and stingray are also present.
 autent_dict = {"bob": "123", "ann": "pass123", "mike": "password123", "liz": "pass123"}  # authencitation database
 my_user_name = ""  # empty username var
 my_pass_word = ""  # empty password var
+count = 0  # universal counting variable
 my_text = 0  # default value for text choice
-my_text_list = [] # here is separated text from original TEXTS
-length_stat = []  # index 0 == 1 letter words, index 1 == 2 letters words etc
+my_text_list = list()  # here is separated text from original TEXTS
 spec_stat = {
     'length': 0,
     'title': 0,
@@ -35,7 +35,13 @@ spec_stat = {
     'digit': 0,
     'sum': 0,
 }  # cleaning counter for spec stat
-count = 0
+length_stat = [
+    0, 0, 0, 0, 0, 0, 0, 0, 0 ,0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0,
+]  # index 1 == 1 letter words, index 2 == 2 letters words etc | 45 indexes = the longiest english word
 
 # user welcome
 print('=' * 60)
@@ -61,6 +67,7 @@ my_text = my_text - 1
 print('=' * 60)
 
 # text separation from TEXTS
+count = 0
 my_text_list = TEXTS[my_text].split()
 while count < len(my_text_list):
     my_text_list[count] = my_text_list[count].strip(",.")  # cleaning from unwanted characters
@@ -70,29 +77,28 @@ while count < len(my_text_list):
 count = 0
 spec_stat['length'] = len(my_text_list)  # total amount of words
 while count < len(my_text_list):
-    if my_text_list[count].istitle():
+    if my_text_list[count].istitle():  # counting titlecase
         spec_stat['title'] += 1
-    if my_text_list[count].isupper():
+    if my_text_list[count].isupper():  # counting uppercase
         spec_stat['upper'] += 1
-    if my_text_list[count].islower():
+    if my_text_list[count].islower():  # counting lowercase
         spec_stat['lower'] += 1
-    if my_text_list[count].isdigit():
+    if my_text_list[count].isdigit():  # counting numeric and summary
         spec_stat['digit'] += 1
+        spec_stat['sum'] += int(my_text_list[count])
+    length_stat[len(my_text_list[count])] += 1  # stats of amount of lenghts of the words
     count += 1
-
-
-# .title amount of words
-# .uppercase amount of words
-# .lowercase amount of words
-# amount of numbers
-# sum of all numbers from the text
-
-
-# star chart as stats of amount of lenghts of the words
 
 
 # FINAL OUTPUT
 print('=' * 60)
-print('Total words amount:', spec_stat['length'])
+print('Total words amount:              ', spec_stat['length'])
+print('Total titlecase words amount:    ', spec_stat['title'])
+print('Total uppercase words amount:    ', spec_stat['upper'])
+print('Total lowercase words amount:    ', spec_stat['lower'])
+print('Total numeric strings amount:    ', spec_stat['digit'])
+print('=' * 60)
+
 print(my_text_list)
 print(spec_stat)
+print(length_stat)
