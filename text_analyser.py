@@ -22,8 +22,8 @@ garpike and stingray are also present.
     ]
 # definitions for variables
 autent_dict = {"bob": "123", "ann": "pass123", "mike": "password123", "liz": "pass123"}  # authencitation database
-my_user_name = ""  # empty username var
-my_pass_word = ""  # empty password var
+# my_user_name = ""  # empty username var
+# my_pass_word = ""  # empty password var
 count = 0  # universal counting variable
 my_text = 0  # default value for text choice
 my_text_list = list()  # here is saved separated text from original TEXTS
@@ -42,7 +42,7 @@ length_stat = []  # index 1 == 1 letter words, index 2 == 2 letters words etc | 
 print('=' * 60)
 print('                TEXT ANALYSER')
 print('=' * 60)
-print('Welcome: login, choo®se text and view instant results!')
+print('Welcome: login, choose text and view instant results!')
 print('=' * 60)
 
 # authentication and login
@@ -56,7 +56,7 @@ if my_user_name in autent_dict:
         print('wrong password!!!')
         exit()
 
-# three text choices to be analysed - input int
+# text choices to be analysed - input int
 my_text = int(input('Insert which text you would like to analyze (from 1 to 3): '))
 my_text = my_text - 1
 print('=' * 60)
