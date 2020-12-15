@@ -16,7 +16,7 @@ USER |   PASSWORD  |
 
 Pokud se ti tento úkol bude zdát složitý, prověř, jestli zadané údaje jsou mezi registrovanými, ale neřeš spojení uživatel - heslo.
 
-4. Program nechá uživatele vybrat mezi třemi texty, uloženými v proměnné TEXTS. 
+4. Program nechá uživatele vybrat mezi třemi texty, uloženými v proměnné TEXTS - ošetřit validitu vstupů!!!
 
 5. Pro vybraný text spočítá následující statistiky:
 - počet slov,
