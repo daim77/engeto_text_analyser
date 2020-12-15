@@ -58,10 +58,16 @@ if my_user_name in autent_dict:
 
 # text choices to be analysed - input int
 while count == 0:
-    my_text = int(input(f'Insert which text you would like to analyze (from 1 to {len(TEXTS)}): '))
-    if my_text <= len(TEXTS):
-        my_text = my_text - 1
+    my_text = input(f'Insert which text you would like to analyze (from 1 to {len(TEXTS)}): ')
+    if not my_text.isdigit():
+        count = 0
+        continue
+    elif int(my_text) in range(1, (len(TEXTS) + 1)):
+        my_text = int(my_text)
+        my_text -= 1
         break
+    else:
+        count = 0
 print('=' * 60)
 
 # text separation from TEXTS
