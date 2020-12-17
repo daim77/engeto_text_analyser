@@ -21,12 +21,11 @@ garpike and stingray are also present.
 '''
     ]
 # definitions for variables
-autent_dict = {"bob": "123", "ann": "pass123", "mike": "password123", "liz": "pass123"}  # authencitation database
-my_user_name = ""  # empty username var
-my_pass_word = ""  # empty password var
-count = 0  # universal counting variable
-my_text = 0  # default value for text choice
-my_text_list = list()  # here is saved separated text from original TEXTS
+AUTENT_DICT = {"bob": "123", "ann": "pass123", "mike": "password123", "liz": "pass123"}
+count = 0
+my_text = 0
+sixty = '=' * 60
+my_text_list = list()
 spec_stat = {
     'length': 0,
     'title': 0,
@@ -34,50 +33,46 @@ spec_stat = {
     'lower': 0,
     'digit': 0,
     'sum': 0,
-}  # cleaning counter for spec stat
+}
 
-length_stat = []  # index 1 == 1 letter words, index 2 == 2 letters words etc | 45 indexes = the longiest english word
+length_stat = []    # index 1 == 1 letter words, index 2 == 2 letters words etc
 
 # user welcome
-print('=' * 60)
-print('                TEXT ANALYSER')
-print('=' * 60)
-print('Welcome: login, choose text and view instant results!')
-print('=' * 60)
+print(
+    sixty, '\n',
+    'TEXT ANALYSER'.rjust(33), '\n',
+    sixty, '\n',
+    'Welcome: login, choose text and view instant results!'.rjust(56), '\n',
+    sixty
+)
 
 # authentication and login
 my_user_name = input('user name: ')
 my_pass_word = input('password:  ')
-if my_user_name not in autent_dict:
-    print('wrong user name!!!')
+if my_user_name not in AUTENT_DICT or my_pass_word != AUTENT_DICT[my_user_name]:
+    print("Wrong credentials!")
     exit()
-if my_user_name in autent_dict:
-    if autent_dict[my_user_name] != my_pass_word:
-        print('wrong password!!!')
-        exit()
 
 # text choices to be analysed - input int
 while count == 0:
     my_text = input(f'Insert which text you would like to analyze (from 1 to {len(TEXTS)}): ')
-    if not my_text.isdigit():  # text entry valid protection
+    if not my_text.isdigit():
         print('Entry must be NUMBER within required interval!...')
         continue
     elif int(my_text) in range(1, (len(TEXTS) + 1)):
-        my_text = int(my_text)
-        my_text -= 1
+        my_text = int(my_text) - 1
         break
     else:
         print('Entry must be number within REQUIRED INTERVAL!...')
 print('=' * 60)
 
 # text separation from TEXTS
-count = 0
 my_text_list = TEXTS[my_text].split()
-while count < len(my_text_list):
-    my_text_list[count] = my_text_list[count].strip(",.")  # cleaning from unwanted characters
-    count += 1
+for count, char in enumerate(my_text_list):
+    my_text_list[count] = char.strip(",.")
 
-# fullfilment length_stat LIST for counting letters in particular words, last index = the longiest word + 1
+# fullfilment length_stat LIST for counting letters in particular words,
+# last index = the longiest word + 1
 count = -1
 while count < len(max(my_text_list, key=len)):
     length_stat.append(0)
@@ -85,29 +80,31 @@ while count < len(max(my_text_list, key=len)):
 
 # stats for text
 count = 0
-spec_stat['length'] = len(my_text_list)  # total amount of words
+spec_stat['length'] = len(my_text_list)
 while count < len(my_text_list):
-    if my_text_list[count].istitle():  # counting titlecase
+    if my_text_list[count].istitle():
         spec_stat['title'] += 1
-    if my_text_list[count].isupper():  # counting uppercase
+    elif my_text_list[count].isupper():
         spec_stat['upper'] += 1
-    if my_text_list[count].islower():  # counting lowercase
+    elif my_text_list[count].islower():
         spec_stat['lower'] += 1
-    if my_text_list[count].isdigit():  # counting numeric and summary
+    elif my_text_list[count].isdigit():
         spec_stat['digit'] += 1
         spec_stat['sum'] += int(my_text_list[count])
-    length_stat[len(my_text_list[count])] += 1  # stats of amount of lenghts of the words
+    length_stat[len(my_text_list[count])] += 1
     count += 1
 
 
 # FINAL OUTPUT
-print('=' * 60)
-print('Total words amount:              ', spec_stat['length'])
-print('Total titlecase words amount:    ', spec_stat['title'])
-print('Total uppercase words amount:    ', spec_stat['upper'])
-print('Total lowercase words amount:    ', spec_stat['lower'])
-print('Total numeric strings amount:    ', spec_stat['digit'])
-print('=' * 60)
+print(
+    sixty, '\n',
+    'Total words amount:              ', spec_stat['length'], '\n',
+    'Total titlecase words amount:    ', spec_stat['title'], '\n',
+    'Total uppercase words amount:    ', spec_stat['upper'], '\n',
+    'Total lowercase words amount:    ', spec_stat['lower'], '\n',
+    'Total numeric strings amount:    ', spec_stat['digit'], '\n',
+    sixty
+)
 
 # star chart visualisation
 count = 1
@@ -117,6 +114,6 @@ while count < (len(length_stat) - 1):
     count += 1
 
 # sum up output
-print('=' * 60)
-print('Total sum of numeric strings: ', spec_stat['sum'])
-print('=' * 60)
+print(sixty)
+print('Total sum of all numeric strings: ', spec_stat['sum'])
+print(sixty)
