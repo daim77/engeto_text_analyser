@@ -79,9 +79,8 @@ while count < len(max(my_text_list, key=len)):
     count += 1
 
 # stats for text
-count = 0
 spec_stat['length'] = len(my_text_list)
-while count < len(my_text_list):
+for count, char in enumerate(my_text_list):
     if my_text_list[count].istitle():
         spec_stat['title'] += 1
     elif my_text_list[count].isupper():
@@ -92,8 +91,6 @@ while count < len(my_text_list):
         spec_stat['digit'] += 1
         spec_stat['sum'] += int(my_text_list[count])
     length_stat[len(my_text_list[count])] += 1
-    count += 1
-
 
 # FINAL OUTPUT
 print(
@@ -107,8 +104,8 @@ print(
 )
 
 # star chart visualisation
-count = 1
-while count < (len(length_stat) - 1):
+count = 0
+for char in length_stat:
     if length_stat[count] != 0:
         print(count, '*' * length_stat[count], ' ', length_stat[count])
     count += 1
